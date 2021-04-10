@@ -587,7 +587,7 @@ end
 -- Returns the number from a to b based on the fraction provided.
 --
 function math.lerpclamped(a, b, t)
-	return math.min(b, math.max(a, (b - a) * t + a))
+	return math.clamp(a, b, (b - a) * t + a)
 end
 
 
