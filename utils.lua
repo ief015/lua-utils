@@ -329,8 +329,8 @@ function hsv2rgb(h, s, v)
 	-- https://stackoverflow.com/questions/3018313/algorithm-to-convert-rgb-to-hsv-and-hsv-to-rgb-in-range-0-255-for-both
 	local p, q, t, fract
 	h = (h % 360) / 60
-	s = math.clamp(s, 0, 1)
-	v = math.clamp(v, 0, 1)
+	s = math.clamp(0, 1, s)
+	v = math.clamp(0, 1, v)
 	fract = h - math.floor(h)
 	p = v * (1 - s)
 	q = v * (1 - (s*fract))
@@ -366,8 +366,8 @@ function hsl2rgb(h, s, l)
 	-- https://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion
 	local r, g, b
 	h = (h % 360) / 360
-	s = math.clamp(s, 0, 1)
-	l = math.clamp(l, 0, 1)
+	s = math.clamp(0, 1, s)
+	l = math.clamp(0, 1, l)
 	if s == 0 then
 		r = l
 		g = l
@@ -402,9 +402,9 @@ end
 --
 function rgb2hsl(r, g, b)
 	-- https://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion
-	r = math.clamp(r, 0, 1)
-	g = math.clamp(g, 0, 1)
-	b = math.clamp(b, 0, 1)
+	r = math.clamp(0, 1, r)
+	g = math.clamp(0, 1, g)
+	b = math.clamp(0, 1, b)
 	local max, min = math.max(r, g, b), math.min(r, g, b)
 	local h, s, l
 	l = (max + min) / 2
